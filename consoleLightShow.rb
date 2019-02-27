@@ -7,8 +7,7 @@
 
                 TODO: 
     -learn how to use time, so user can input length of time to run
-    -Create method whether user wants to just spam one (or more?) strings OR
-        print random letters in random colors
+
     -Check to see whether program runs faster in the command prompt.
 =end
 require 'pastel'
@@ -67,6 +66,16 @@ def printRandom(x)
 
 end
 
+def infiniteLoopWarning()
+    puts "**********************************************************************"
+    puts "***************************WARNING!***********************************"
+    puts "**************This Method Causes an Infinite Loop!********************"
+    puts "********To stop this infinite loop, press CTRL+C in the terminal******"
+    puts "***********If you wish to continue, enter 'Y' and hit return**********"
+    puts "***********Otherwise, enter anything else and return to safety********"
+    puts "**********************************************************************"
+    return gets.chomp.upcase
+end
 
 print "-------------------------------------------------------------------------"
 print "\nCONSOLELIGHTSHOW.rb\n"
@@ -78,13 +87,17 @@ coin = gets.to_i
 
 case(coin)
 when 1
-    st = "q,w,e,r,t,y,u,i,o,p,a,s,d,f,g,h,j,k,l,z,x,c,v,b,n,m,Q,W,E,R,T,Y,U,I,O,P,A,S,D,F,G,H,J,K,L,Z,X,C,V,B,N,M,1,2,3,4,5,6,7,8,9,0,!,@,#,$,%,^,&,*,(,),_,+,[,],|,{,}"
-    x = st.split(",")
-    printRandom(x)
+    if infiniteLoopWarning() == "Y"
+        st = "q,w,e,r,t,y,u,i,o,p,a,s,d,f,g,h,j,k,l,z,x,c,v,b,n,m,Q,W,E,R,T,Y,U,I,O,P,A,S,D,F,G,H,J,K,L,Z,X,C,V,B,N,M,1,2,3,4,5,6,7,8,9,0,!,@,#,$,%,^,&,*,(,),_,+,[,],|,{,}"
+        x = st.split(",")
+        printRandom(x)
+    end
 when 2
-    puts "Enter string: "
-    str = gets.chomp
-    printString(str)
+    if infiniteLoopWarning() == "Y"
+        puts "Enter string: "
+        str = gets.chomp
+        printString(str)
+    end
 else
     puts "Undefined input, ending program"
 end
