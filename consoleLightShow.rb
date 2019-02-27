@@ -16,6 +16,23 @@ $pastel = Pastel.new
 $prng = Random.new
 $prng1 = Random.new
 
+def isMe(str)
+    case $prng1.rand(1..6)
+    when 1
+        v = $pastel.red(str)
+    when 2
+        v = $pastel.green(str)
+    when 3
+        v = $pastel.yellow(str)
+    when 4
+        v = $pastel.blue(str)
+    when 5
+        v = $pastel.magenta(str)
+    when 6
+        v = $pastel.cyan(str)
+    end
+end
+
 def onMe(str)
     case $prng1.rand(1..6)
     when 1
@@ -36,49 +53,15 @@ end
 def printString(printMe)
     while true do
         v = printMe 
-        case $prng1.rand(1..6)
-        when 1
-            v = $pastel.red(printMe)
-        when 2
-            v = $pastel.green(printMe)
-        when 3
-            v = $pastel.yellow(printMe)
-        when 4
-            v = $pastel.blue(printMe)
-        when 5
-            v = $pastel.magenta(printMe)
-        when 6
-            v = $pastel.cyan(printMe)
-        end
-        v = onMe(v)
-
+        v = isMe(onMe(v))
         print "#{v}"
     end
 end
 
-def printRandom()
-
+def printRandom(x)
     
-    st = "q,w,e,r,t,y,u,i,o,p,a,s,d,f,g,h,j,k,l,z,x,c,v,b,n,m,Q,W,E,R,T,Y,U,I,O,P,A,S,D,F,G,H,J,K,L,Z,X,C,V,B,N,M,1,2,3,4,5,6,7,8,9,0,!,@,#,$,%,^,&,*,(,),_,+,[,],|,{,}"
-    x = st.split(",")
-
     while true do
-        v = ""
-        case $prng1.rand(1..6)
-        when 1
-            v = $pastel.red(x[$prng.rand(0...x.length())])
-        when 2
-            v = $pastel.green(x[$prng.rand(0...x.length())])
-        when 3
-            v = $pastel.yellow(x[$prng.rand(0...x.length())])
-        when 4
-            v = $pastel.blue(x[$prng.rand(0...x.length())])
-        when 5
-            v = $pastel.magenta(x[$prng.rand(0...x.length())])
-        when 6
-            v = $pastel.cyan(x[$prng.rand(0...x.length())])
-        end
-        v = onMe(v)
+        v = isMe(onMe(x[$prng.rand(0...x.length())]))
         print "#{v}"
     end
 
@@ -95,7 +78,9 @@ coin = gets.to_i
 
 case(coin)
 when 1
-    printRandom()
+    st = "q,w,e,r,t,y,u,i,o,p,a,s,d,f,g,h,j,k,l,z,x,c,v,b,n,m,Q,W,E,R,T,Y,U,I,O,P,A,S,D,F,G,H,J,K,L,Z,X,C,V,B,N,M,1,2,3,4,5,6,7,8,9,0,!,@,#,$,%,^,&,*,(,),_,+,[,],|,{,}"
+    x = st.split(",")
+    printRandom(x)
 when 2
     puts "Enter string: "
     str = gets.chomp
