@@ -22,6 +22,7 @@ def menu()
     print "-------------------------------------------------------------------------"
     puts "\n1) Print Random Letters, Numbers, and Symbols (For a given set of time in seconds)"
     puts "2) Enter a string to be printed in random colors (For a given set of time in seconds)"
+    puts "3) Enter multiple strings to be printed in random colors (For a given set of time in seconds)"
     coin = gets.to_i
     
     case(coin)
@@ -31,6 +32,10 @@ def menu()
         puts "Enter string: "
         str = gets.chomp
         printString(str, getDuration())
+    when 3
+        puts "Enter your strings to be printed, separated by a comma"
+        str = gets.chomp
+        printStringS(str, getDuration())
     else
         puts "Undefined input, ending program"
     end
@@ -96,7 +101,17 @@ def printRandom(duration)
         currentTime = Time.now.to_i
     end
     menu()
+end
 
+def printStringS(printMe, duration)
+    x = printMe.split(", ")
+    currentTime = Time.now.to_i
+    futureTime = currentTime + duration
+    while (currentTime <= futureTime) do
+        print "#{isMe(onMe(x[$prng.rand(0...x.length())]))}"
+        currentTime = Time.now.to_i
+    end
+    menu()
 end
 
 def infiniteLoopWarning()
