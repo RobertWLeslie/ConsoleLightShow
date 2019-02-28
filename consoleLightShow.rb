@@ -40,28 +40,34 @@ def menu()
     when 100
         puts "Bye Bye"
     else
-        puts "Undefined input, ending program"
+        puts "Undefined input"
+        menu()
     end
 end
 
-
+#isMe(str)
+# Passed a string, and returns the string as a pastel with the background
+# depending on a randomly generated number
 def isMe(str)
     case $prng1.rand(1..6)
     when 1
-        v = $pastel.red(str)
+        return $pastel.red(str)
     when 2
-        v = $pastel.green(str)
+        return $pastel.green(str)
     when 3
-        v = $pastel.yellow(str)
+        return $pastel.yellow(str)
     when 4
-        v = $pastel.blue(str)
+        return $pastel.blue(str)
     when 5
-        v = $pastel.magenta(str)
+        return $pastel.magenta(str)
     when 6
-        v = $pastel.cyan(str)
+        return $pastel.cyan(str)
     end
 end
 
+#onMe(str)
+# Passed a string, and returns it as a pastel string with the background changed
+# Depending on a random number
 def onMe(str)
     case $prng1.rand(1..6)
     when 1
@@ -79,11 +85,15 @@ def onMe(str)
     end
 end
 
+# Hahahha its not like I even need this method now, do I?
 def getDuration()
     puts "Enter duration (in seconds)"
     return gets.to_i
 end
 
+# printString(string printMe, int duration)
+# Passed a string, and a durration. Prints the given string in randomly picked
+# colors for a given duration (in seconds), and then calls the menu function
 def printString(printMe, duration)
     currentTime = Time.now.to_i
     futureTime = currentTime + duration
@@ -94,6 +104,10 @@ def printString(printMe, duration)
     menu()
 end
 
+#printRandom(int duration)
+# Passed an integer, interpreted as a duration in seconds for a while loop to 
+# run, prints out random symbols in a string array in randomly picked colors for
+# a given duration, and then calls the menu function
 def printRandom(duration)
     st = "q,w,e,r,t,y,u,i,o,p,a,s,d,f,g,h,j,k,l,z,x,c,v,b,n,m,Q,W,E,R,T,Y,U,I,O,P,A,S,D,F,G,H,J,K,L,Z,X,C,V,B,N,M,1,2,3,4,5,6,7,8,9,0,!,@,#,$,%,^,&,*,(,),_,+,[,],|,{,}"
     x = st.split(",")
