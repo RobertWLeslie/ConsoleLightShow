@@ -6,21 +6,26 @@
 
 
                 TODO: 
-    -learn how to use time, so user can input length of time to run
-
-    -Check to see whether program runs faster in the command prompt.
+    - Idk yet I'll have to talk to Josh.
 =end
 require 'pastel'
 $pastel = Pastel.new
 $prng = Random.new
 $prng1 = Random.new
 
-def menu()
+# titleSlide()
+# This is the first method that runs, and then calls menu()
+def titleSlide()
     print "\n-------------------------------------------------------------------------"
     print "\nCONSOLELIGHTSHOW.rb\n"
     print "A program for Joshua Bruce, By Robert Leslie\n"
-    print "-------------------------------------------------------------------------"
-    puts "\n1) Print Random Letters, Numbers, and Symbols (For a given set of time in seconds)"
+    print "-------------------------------------------------------------------------\n"
+    menu()
+end
+
+def menu()
+    print "-------------------------------------------------------------------------\n"
+    puts "1) Print Random Letters, Numbers, and Symbols (For a given set of time in seconds)"
     puts "2) Enter a string to be printed in random colors (For a given set of time in seconds)"
     puts "3) Enter multiple strings to be printed in random colors (For a given set of time in seconds)"
     puts "100) End Program"
@@ -147,4 +152,4 @@ def infiniteLoopWarning()
     return gets.chomp.upcase
 end
 
-menu()
+titleSlide()
