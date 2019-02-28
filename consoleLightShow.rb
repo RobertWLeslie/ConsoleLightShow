@@ -15,6 +15,28 @@ $pastel = Pastel.new
 $prng = Random.new
 $prng1 = Random.new
 
+def menu()
+    print "\n-------------------------------------------------------------------------"
+    print "\nCONSOLELIGHTSHOW.rb\n"
+    print "A program for Joshua Bruce, By Robert Leslie\n"
+    print "-------------------------------------------------------------------------"
+    puts "\n1) Print Random Letters, Numbers, and Symbols (For a given set of time in seconds)"
+    puts "2) Enter a string to be printed in random colors (For a given set of time in seconds)"
+    coin = gets.to_i
+    
+    case(coin)
+    when 1
+        printRandom(getDuration())
+    when 2
+        puts "Enter string: "
+        str = gets.chomp
+        printString(str, getDuration())
+    else
+        puts "Undefined input, ending program"
+    end
+end
+
+
 def isMe(str)
     case $prng1.rand(1..6)
     when 1
@@ -61,6 +83,7 @@ def printString(printMe, duration)
         print "#{isMe(onMe(printMe))}"
         currentTime = Time.now.to_i
     end
+    menu()
 end
 
 def printRandom(duration)
@@ -72,6 +95,7 @@ def printRandom(duration)
         print "#{isMe(onMe(x[$prng.rand(0...x.length())]))}"
         currentTime = Time.now.to_i
     end
+    menu()
 
 end
 
@@ -91,22 +115,4 @@ def infiniteLoopWarning()
     return gets.chomp.upcase
 end
 
-print "-------------------------------------------------------------------------"
-print "\nCONSOLELIGHTSHOW.rb\n"
-print "A program for Joshua Bruce, By Robert Leslie\n"
-print "-------------------------------------------------------------------------"
-puts "\n1) Print Random Letters, Numbers, and Symbols (in an infinite loop)"
-puts "2) Enter a string to be printed in random colors (in an infinite loop)"
-coin = gets.to_i
-
-case(coin)
-when 1
-    printRandom(getDuration())
-when 2
-    puts "Enter string: "
-    str = gets.chomp
-    printString(str, getDuration())
-    
-else
-    puts "Undefined input, ending program"
-end
+menu()
