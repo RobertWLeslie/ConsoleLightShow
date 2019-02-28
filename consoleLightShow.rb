@@ -23,6 +23,7 @@ def menu()
     puts "\n1) Print Random Letters, Numbers, and Symbols (For a given set of time in seconds)"
     puts "2) Enter a string to be printed in random colors (For a given set of time in seconds)"
     puts "3) Enter multiple strings to be printed in random colors (For a given set of time in seconds)"
+    puts "100) End Program"
     coin = gets.to_i
     
     case(coin)
@@ -36,6 +37,8 @@ def menu()
         puts "Enter your strings to be printed, separated by a comma"
         str = gets.chomp
         printStringS(str, getDuration())
+    when 100
+        puts "Bye Bye"
     else
         puts "Undefined input, ending program"
     end
