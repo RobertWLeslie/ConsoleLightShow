@@ -49,30 +49,44 @@ def onMe(str)
     end
 end
 
-def printString(printMe)
-    while true do
-        v = printMe 
-        v = isMe(onMe(v))
-        print "#{v}"
+def getDuration()
+    puts "Enter duration (in seconds)"
+    return gets.to_i
+end
+
+def printString(printMe, duration)
+    currentTime = Time.now.to_i
+    futureTime = currentTime + duration
+    while (currentTime <= futureTime) do
+        print "#{isMe(onMe(printMe))}"
+        currentTime = Time.now.to_i
     end
 end
 
-def printRandom(x)
-    
-    while true do
-        v = isMe(onMe(x[$prng.rand(0...x.length())]))
-        print "#{v}"
+def printRandom(duration)
+    st = "q,w,e,r,t,y,u,i,o,p,a,s,d,f,g,h,j,k,l,z,x,c,v,b,n,m,Q,W,E,R,T,Y,U,I,O,P,A,S,D,F,G,H,J,K,L,Z,X,C,V,B,N,M,1,2,3,4,5,6,7,8,9,0,!,@,#,$,%,^,&,*,(,),_,+,[,],|,{,}"
+    x = st.split(",")
+    currentTime = Time.now.to_i
+    futureTime = currentTime + duration
+    while (currentTime <= futureTime) do
+        print "#{isMe(onMe(x[$prng.rand(0...x.length())]))}"
+        currentTime = Time.now.to_i
     end
 
 end
 
 def infiniteLoopWarning()
     puts "**********************************************************************"
-    puts "***************************WARNING!***********************************"
+    puts "**********************************************************************"
+    puts "**********************************************************************"
+    puts "****************************WARNING!**********************************"
     puts "**************This Method Causes an Infinite Loop!********************"
     puts "********To stop this infinite loop, press CTRL+C in the terminal******"
     puts "***********If you wish to continue, enter 'Y' and hit return**********"
-    puts "***********Otherwise, enter anything else and return to safety********"
+    puts "**********Otherwise, enter anything else and return to safety*********"
+    puts "**********************************************************************"
+    puts "**********************************************************************"
+    puts "**********************************************************************"
     puts "**********************************************************************"
     return gets.chomp.upcase
 end
@@ -87,17 +101,12 @@ coin = gets.to_i
 
 case(coin)
 when 1
-    if infiniteLoopWarning() == "Y"
-        st = "q,w,e,r,t,y,u,i,o,p,a,s,d,f,g,h,j,k,l,z,x,c,v,b,n,m,Q,W,E,R,T,Y,U,I,O,P,A,S,D,F,G,H,J,K,L,Z,X,C,V,B,N,M,1,2,3,4,5,6,7,8,9,0,!,@,#,$,%,^,&,*,(,),_,+,[,],|,{,}"
-        x = st.split(",")
-        printRandom(x)
-    end
+    printRandom(getDuration())
 when 2
-    if infiniteLoopWarning() == "Y"
-        puts "Enter string: "
-        str = gets.chomp
-        printString(str)
-    end
+    puts "Enter string: "
+    str = gets.chomp
+    printString(str, getDuration())
+    
 else
     puts "Undefined input, ending program"
 end
