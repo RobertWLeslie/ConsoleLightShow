@@ -125,6 +125,12 @@ def printRandom(duration)
     menu()
 end
 
+#printStringS(string printMe, int duration)
+#Passed a string and a duration, the code creates a string array split at a 
+# comma followed by a space. I know there can be some problems with this but
+# this was the first thing that came to mind. I could use a regex but what ever.
+# This does the same exact thing as the other printing functions so I expect the
+# person reading this code to assume what this method does.
 def printStringS(printMe, duration)
     x = printMe.split(", ")
     currentTime = Time.now.to_i
@@ -136,6 +142,10 @@ def printStringS(printMe, duration)
     menu()
 end
 
+#infiniteLoopWarning()
+# This was written early in development incase I knew some logic at some point
+# would cause an infinite loop. I'm keeping this method in here just in case 
+# logic is written that could accidentally cause an infinite loop
 def infiniteLoopWarning()
     puts "**********************************************************************"
     puts "**********************************************************************"
