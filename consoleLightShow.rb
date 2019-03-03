@@ -54,15 +54,24 @@ def menu()
         betaFuntions()
     when 100
         puts "Bye Bye"
+    when -1
+        infiniteLoopWarning(1)
     else
         puts "Undefined input"
         menu()
     end
 end
 
+# This method is a menu used to call and test functions which I quite haven't
+# yet ironed out the kinks, I haven't thrown into the menu yet, or don't fit
+# quite right for the menu
 def betaFuntions()
     print "\n-------------------------------------------------------------------------\n"
+    puts "These are the Beta Functions, these are functions that are not quite thought"
+    puts "yet, I havne't put into the main menu yet, or isn't quite right for the menu"
     puts "1) getIsMe()"
+    puts "2) getOnMe() (heheheheh)"
+    puts "99) Infinite Loop warning Message"
     puts "100) Return to safety"
     coin = gets.to_i
 
@@ -71,6 +80,8 @@ def betaFuntions()
         getIsMe()
     when 2
         getOnMe() #heheheheheh
+    when 99
+        infiniteLoopWarning(0)
     when 100
         menu()
     else
@@ -200,7 +211,7 @@ end
 # This was written early in development incase I knew some logic at some point
 # would cause an infinite loop. I'm keeping this method in here just in case 
 # logic is written that could accidentally cause an infinite loop
-def infiniteLoopWarning()
+def infiniteLoopWarning(whereAmIFrom)
     puts "**********************************************************************"
     puts "**********************************************************************"
     puts "**********************************************************************"
@@ -213,7 +224,14 @@ def infiniteLoopWarning()
     puts "**********************************************************************"
     puts "**********************************************************************"
     puts "**********************************************************************"
-    return gets.chomp.upcase
+    case(whereAmIFrom)
+    when 0
+        betaFuntions()
+    when 1
+        menu()
+    else
+        menu()
+    end
 end
 
 titleSlide()
