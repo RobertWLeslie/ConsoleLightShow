@@ -8,7 +8,10 @@
                                    TODO: 
 - In order for the TTY gem to work, my current version of ruby needs to be
  downgraded from 2.6.1 to 2.5.0, or just wait until TTY works with 2.6.1
- (Which ever can come first, I'm writing this on a train to Newark with no internet access so ayyy lmao)
+ (Which ever can come first, I'm writing this on a train to Newark with no
+ internet access so ayyy lmao)
+ - Create method that only prints out user specified colors
+ - Get TTY to work
 =end
 require 'pastel'
 
@@ -31,6 +34,7 @@ def menu()
     puts "1) Print Random Letters, Numbers, and Symbols (For a given set of time in seconds)"
     puts "2) Enter a string to be printed in random colors (For a given set of time in seconds)"
     puts "3) Enter multiple strings to be printed in random colors (For a given set of time in seconds)"
+    puts "99) Beta Functions"
     puts "100) End Program"
     coin = gets.to_i
     
@@ -45,12 +49,48 @@ def menu()
         puts "Enter your strings to be printed, separated by a comma"
         str = gets.chomp
         printStringS(str, getDuration())
+    when 99
+        puts "Entering Beta Functions..."
+        betaFuntions()
     when 100
         puts "Bye Bye"
     else
         puts "Undefined input"
         menu()
     end
+end
+
+def betaFuntions()
+    print "\n-------------------------------------------------------------------------\n"
+    puts "1) getIsMe()"
+    puts "100) Return to safety"
+    coin = gets.to_i
+
+    case(coin)
+    when 1
+        getIsMe()
+    when 100
+        menu()
+    else
+        puts "Undefined Input\nReturning To Safety"
+        menu()
+    end
+end
+
+# getIsMe()
+# Returns an integer array (max 6) of user picked numbers, which corresponds to
+# the colors that work well with the command prompt (this program has not yet
+# been tested to work in any Linux Kernel, for reasons of lazyness)
+# Note to self: GET THIS SHIT TO WORK, THEN MAKE EACH SELECTION REPRESENT THAT
+# COLOR, DO THIS FOR getOnMe() TOO
+def getIsMe()
+    puts "Enter the colors you want the printed string to be"
+    puts "1) Red\n2) Green\n3) Yellow\n4) Blue\n5) Magenta\n6) Cyan"
+    $onMeString = gets.chomp.split(", ")
+    (0...$onMeString.length()).each do |i|
+        $onMeString[i] = $onMeString[i].to_i
+    end
+    puts "#{$onMeString}"
 end
 
 #isMe(str)
