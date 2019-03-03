@@ -1,12 +1,14 @@
 =begin
-        CONSOLE LIGHT SHOW
-    An Application for Joshua D. Bruce
-        By Robert Leslie 
-                2019
+                            CONSOLE LIGHT SHOW
+                    An Application for Joshua D. Bruce
+                             By Robert Leslie 
+                                   2019
 
 
-                TODO: 
-    - Idk yet I'll have to talk to Josh.
+                                   TODO: 
+- In order for the TTY gem to work, my current version of ruby needs to be
+ downgraded from 2.6.1 to 2.5.0, or just wait until TTY works with 2.6.1
+ (Which ever can come first, I'm writing this on a train to Newark with no internet access so ayyy lmao)
 =end
 require 'pastel'
 
