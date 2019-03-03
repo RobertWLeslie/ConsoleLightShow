@@ -10,8 +10,8 @@
  downgraded from 2.6.1 to 2.5.0, or just wait until TTY works with 2.6.1
  (Which ever can come first, I'm writing this on a train to Newark with no
  internet access so ayyy lmao)
- - Create method that only prints out user specified colors
- - Get TTY to work
+ - Create method(s) that only prints out user specified colors
+ - Get TTY to work (possible downgrading to Ruby 2.5.0?)
 =end
 require 'pastel'
 
@@ -69,6 +69,8 @@ def betaFuntions()
     case(coin)
     when 1
         getIsMe()
+    when 2
+        getOnMe() #heheheheheh
     when 100
         menu()
     else
@@ -86,11 +88,11 @@ end
 def getIsMe()
     puts "Enter the colors you want the printed string to be"
     puts "1) Red\n2) Green\n3) Yellow\n4) Blue\n5) Magenta\n6) Cyan"
-    $onMeString = gets.chomp.split(", ")
-    (0...$onMeString.length()).each do |i|
-        $onMeString[i] = $onMeString[i].to_i
+    $isMeString = gets.chomp.split(", ")
+    (0...$isMeString.length()).each do |i|
+        $isMeString[i] = $onMeString[i].to_i
     end
-    puts "#{$onMeString}"
+    puts "Chosen Numbers: #{$isMeString}"
 end
 
 #isMe(str)
@@ -113,6 +115,15 @@ def isMe(str)
     end
 end
 
+def getOnMe()
+    puts "Enter the colors you want the background of the printed strings to be ON (the background)"
+    puts "1) Red\n2) Green\n3) Yellow\n4) Blue\n5) Magenta\n6) Cyan"
+    $onMeString = gets.chomp.split(", ")
+    (0...$onMeString.length()).each do |i|
+        $onMeString[i] = $onMeString[i].to_i
+    end
+    puts "Chosen Numbers: #{$onMeString}"
+end
 #onMe(str)
 # Passed a string, and returns it as a pastel string with the background changed
 # Depending on a random number
