@@ -12,6 +12,7 @@
  internet access so ayyy lmao)
  - Create method(s) that only prints out user specified colors
  - Get TTY to work (possible downgrading to Ruby 2.5.0?)
+ - Module the hell out of this.
 =end
 require 'pastel'
 
@@ -29,6 +30,11 @@ def titleSlide()
     menu()
 end
 
+# menu()
+# instead of having to run a very long command line, every single method calls
+# this function in some form to return the user to this place, which can then
+# safely end the program (unless the user performs an interrupt using Ctrl + C 
+# in the command\/terminal prompt, but that is not very nice, now is it?)
 def menu()
     print "\n-------------------------------------------------------------------------\n"
     puts "1) Print Random Letters, Numbers, and Symbols (For a given set of time in seconds)"
@@ -126,6 +132,11 @@ def isMe(str)
     end
 end
 
+# getOnMe()
+# See: getIsMe(). Its exactly the same as that but it is for the background
+# color of the stirng printed. I'm realising now that I can just call the 
+# getisMe() method twice for a statement, but I like the name of this method too
+# much, so I'm keeping it.
 def getOnMe()
     puts "Enter the colors you want the background of the printed strings to be ON (the background)"
     puts "1) Red\n2) Green\n3) Yellow\n4) Blue\n5) Magenta\n6) Cyan"
