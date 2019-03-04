@@ -77,6 +77,7 @@ def betaFuntions()
     print "\n-------------------------------------------------------------------------\n"
     puts "These are the Beta Functions, these are functions that are not quite thought"
     puts "yet, I havne't put into the main menu yet, or isn't quite right for the menu"
+    puts "Use these at your own discretion, I'm not your dad"
     puts "1) getIsMe()"
     puts "2) getOnMe() (heheheheh)"
     puts "99) Infinite Loop warning Message"
@@ -248,3 +249,16 @@ def infiniteLoopWarning(whereAmIFrom)
 end
 
 titleSlide()
+
+BEGIN{
+    puts "Starting ConsoleLightShow.rb..... Enjoy the show!"
+}
+
+END{
+    puts "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    puts "Twitter: @BeltedYapper"
+    puts "Email: robert.leslie1997@gmail.com"
+    puts "Console Light Show, a program for Joshua Bruce by Robert Leslie"
+    puts "2019"
+    puts "\"Stay Lucky\""
+}
