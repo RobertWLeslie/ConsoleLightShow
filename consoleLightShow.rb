@@ -12,7 +12,9 @@
  internet access so ayyy lmao)
  - Create method(s) that only prints out user specified colors
  - Get TTY to work (possible downgrading to Ruby 2.5.0?)
- - Module the hell out of this.
+ - Module the hell out of this, because its getting to 200 lines of code and 
+ there are certain functions that can be their own modules in a separate ruby
+ file, because that looks nicer (and cooler, too!) than one VERY long .rb file.
 =end
 require 'pastel'
 
