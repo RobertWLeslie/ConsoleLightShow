@@ -165,11 +165,11 @@ end
 def getIsMe()
     puts "Enter the colors you want the printed string to be"
     puts "1) Red\n2) Green\n3) Yellow\n4) Blue\n5) Magenta\n6) Cyan"
-    $isMeString = gets.chomp.split(", ")
-    (0...$isMeString.length()).each do |i|
-        $isMeString[i] = $isMeString[i].to_i
+    isMeString = gets.chomp.split(", ")
+    (0...isMeString.length()).each do |i|
+        isMeString[i] = isMeString[i].to_i
     end
-    puts "Chosen Numbers: #{$isMeString}"
+    puts "Chosen Numbers: #{isMeString}"
 end
 
 # getOnMe()
@@ -180,11 +180,28 @@ end
 def getOnMe()
     puts "Enter the colors you want the background of the printed strings to be ON (the background)"
     puts "1) Red\n2) Green\n3) Yellow\n4) Blue\n5) Magenta\n6) Cyan"
-    $onMeString = gets.chomp.split(", ")
-    (0...$onMeString.length()).each do |i|
-        $onMeString[i] = $onMeString[i].to_i
+    onMeString = gets.chomp.split(", ")
+    (0...onMeString.length()).each do |i|
+        onMeString[i] = onMeString[i].to_i
     end
-    puts "Chosen Numbers: #{$onMeString}"
+    puts "Chosen Numbers: #{onMeString}"
+    return onMeString
+end
+
+# getFont()
+# See: getIsMe(). Its exactly the same as that except this is for the FONT of
+# the printed strings. This will eventually be passed into a method that calls
+# those font(s) the user picked. It is currently 3:35 A.M. and I'm slowly
+# starting to lose it. I remember why I don't like hackathons sometimes.
+def getFont()
+    puts "Enter font(s) you want"
+    puts "1) Doom\n2) Standard\n3) Star Wars\n4) Straight\n"
+    fontMe = gets.chomp.split(", ")
+    (0...fontMe.length()).each do |i|
+        fontMe[i] = fontMe[i].to_i
+    end
+    puts "Chosen Numbers: #{fontMe}"
+    return fontMe
 end
 
 # Hahahha its not like I even need this method now, do I?
