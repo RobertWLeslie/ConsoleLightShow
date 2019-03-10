@@ -10,12 +10,14 @@ require 'tty'
 $pastel = Pastel.new
 $prng = Random.new
 $prng1 = Random.new
+$titleSlideFont = TTY::Font.new(:standard)
+$fontFont = TTY::Font.new()
 
 # titleSlide()
 # This is the first method that runs, and then calls menu()
 def titleSlide()
     print "\n-------------------------------------------------------------------------\n"
-    print $font.write("Console Light Show")
+    print $titleSlideFont.write("Console Light Show")
     print "\nA program for Joshua Bruce\nWritten with love by Robert Leslie\n"
     print "---------------------------------------------------------------------------\n"
     menu()
@@ -64,7 +66,8 @@ def betaFuntions()
     puts "Use these at your own discretion, I'm not your dad"
     puts "1) getIsMe()"
     puts "2) getOnMe() (heheheheh)"
-    puts "3) printRandomFont(duration)"
+    puts "3) printStringFont(string, duration)"
+    puts "4) printRandomFont(duration)"
     puts "99) Infinite Loop warning Message"
     puts "100) Return to safety"
     coin = gets.to_i
@@ -81,7 +84,9 @@ def betaFuntions()
     when 3
         puts "Enter your strings to be printed, separated by a comma"
         str = gets.chomp
-        printRandomFont(str, getDuration())
+        printStringRandomFont(str, getDuration())
+    when 4
+        printRandomFont(getDuration())
     else
         puts "Undefined Input\nReturning To Safety"
         menu()
@@ -158,6 +163,29 @@ def onMe(str)
     end
 end
 
+def returnFont(str)
+    case $prng1.rand(1..5)
+    when 1
+        #$fontFont = TTY::Font.new(:3d)
+        #return $fontFont.write(str)
+    when 2
+        $fontFont = TTY::Font.new(:doom)
+        return $fontFont.write(str)
+    when 3
+        $fontFont = TTY::Font.new(:standard)
+        return $fontFont.write(str)
+    when 4
+        $fontFont = TTY::Font.new(:starwars)
+        return $fontFont.write(str)
+    when 5
+        $fontFont = TTY::Font.new(:straight)
+        return $fontFont.write(str)
+    else
+        $fontFont = TTY::Font.new(:standard)
+        return $fontFont.write(str)
+    end
+end
+
 # Hahahha its not like I even need this method now, do I?
 def getDuration()
     puts "Enter duration (in seconds)"
@@ -181,7 +209,7 @@ def printRandom(duration)
 end
 
 #printStringS(string printMe, int duration)
-#Passed a string and a duration, the code creates a string array split at a 
+# Passed a string and a duration, the code creates a string array split at a 
 # comma followed by a space. I know there can be some problems with this but
 # this was the first thing that came to mind. I could use a regex but what ever.
 # This does the same exact thing as the other printing functions so I expect the
@@ -197,14 +225,29 @@ def printStringS(printMe, duration)
     menu()
 end
 
-#printRandomFont(printMe, duration)
-#Passed a string and a duration, the code creates an array 
-def printRandomFont(printMe, duration)
+#printStringFont(printMe, duration)
+# Passed a string and a duration, the code creates an array 
+def printStringRandomFont(printMe, duration)
     x = printMe.split(", ")
     currentTime = Time.now.to_i
     futureTime = currentTime + duration
     while (currentTime <= futureTime) do
-        print "#{isMe(onMe($font.write( x[$prng.rand(0...x.length())] )))}"
+        print "#{isMe(onMe("\n#{returnFont(x[$prng.rand(0...x.length())])}\n\n"))}"
+        currentTime = Time.now.to_i
+    end
+    menu()
+end
+
+#printRandomFont(duration)
+# Prints random fonts in random colors. THere's a weird issue about a space at
+# the end of the print statement and I don't like it :(
+def printRandomFont(duration)
+    st = "A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,0,1,2,3,4,5,6,7,8,9"
+    x = st.split(",")
+    currentTime = Time.now.to_i
+    futureTime = currentTime + duration
+    while (currentTime <= futureTime)do
+        print "#{isMe(onMe("\n#{returnFont(x[$prng.rand(0...x.length())])}\n\n"))}"
         currentTime = Time.now.to_i
     end
     menu()
@@ -227,14 +270,14 @@ def infiniteLoopWarning(whereAmIFrom)
     puts "|*********Otherwise, enter anything else and return to safety********|"
     puts "|********************************************************************|"
     puts "|********************************************************************|"
-    puts "|********************************************************************|"
-    puts "______________________________________________________________________"
+    puts "|____________________________________________________________________|"
     case(whereAmIFrom)
     when 0
         betaFuntions()
     when 1
         menu()
     else
+        puts "I forgot where I came from, I'm going back to the main menu"
         menu()
     end
 end
