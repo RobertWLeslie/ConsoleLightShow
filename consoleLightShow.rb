@@ -93,22 +93,6 @@ def betaFuntions()
     end
 end
 
-# getIsMe()
-# Returns an integer array (max 6) of user picked numbers, which corresponds to
-# the colors that work well with the command prompt (this program has not yet
-# been tested to work in any Linux Kernel, for reasons of lazyness)
-# Note to self: GET THIS SHIT TO WORK, THEN MAKE EACH SELECTION REPRESENT THAT
-# COLOR, DO THIS FOR getOnMe() TOO
-def getIsMe()
-    puts "Enter the colors you want the printed string to be"
-    puts "1) Red\n2) Green\n3) Yellow\n4) Blue\n5) Magenta\n6) Cyan"
-    $isMeString = gets.chomp.split(", ")
-    (0...$isMeString.length()).each do |i|
-        $isMeString[i] = $isMeString[i].to_i
-    end
-    puts "Chosen Numbers: #{$isMeString}"
-end
-
 #isMe(str)
 # Passed a string, and returns the string as a pastel with the background
 # depending on a randomly generated number
@@ -129,20 +113,6 @@ def isMe(str)
     end
 end
 
-# getOnMe()
-# See: getIsMe(). Its exactly the same as that but it is for the background
-# color of the stirng printed. I'm realising now that I can just call the 
-# getisMe() method twice for a statement, but I like the name of this method too
-# much, so I'm keeping it.
-def getOnMe()
-    puts "Enter the colors you want the background of the printed strings to be ON (the background)"
-    puts "1) Red\n2) Green\n3) Yellow\n4) Blue\n5) Magenta\n6) Cyan"
-    $onMeString = gets.chomp.split(", ")
-    (0...$onMeString.length()).each do |i|
-        $onMeString[i] = $onMeString[i].to_i
-    end
-    puts "Chosen Numbers: #{$onMeString}"
-end
 #onMe(str)
 # Passed a string, and returns it as a pastel string with the background changed
 # Depending on a random number
@@ -184,6 +154,37 @@ def returnFont(str)
         $fontFont = TTY::Font.new(:standard)
         return $fontFont.write(str)
     end
+end
+
+# getIsMe()
+# Returns an integer array (max 6) of user picked numbers, which corresponds to
+# the colors that work well with the command prompt (this program has not yet
+# been tested to work in any Linux Kernel, for reasons of lazyness)
+# Note to self: GET THIS SHIT TO WORK, THEN MAKE EACH SELECTION REPRESENT THAT
+# COLOR, DO THIS FOR getOnMe() TOO
+def getIsMe()
+    puts "Enter the colors you want the printed string to be"
+    puts "1) Red\n2) Green\n3) Yellow\n4) Blue\n5) Magenta\n6) Cyan"
+    $isMeString = gets.chomp.split(", ")
+    (0...$isMeString.length()).each do |i|
+        $isMeString[i] = $isMeString[i].to_i
+    end
+    puts "Chosen Numbers: #{$isMeString}"
+end
+
+# getOnMe()
+# See: getIsMe(). Its exactly the same as that but it is for the background
+# color of the stirng printed. I'm realising now that I can just call the 
+# getisMe() method twice for a statement, but I like the name of this method too
+# much, so I'm keeping it.
+def getOnMe()
+    puts "Enter the colors you want the background of the printed strings to be ON (the background)"
+    puts "1) Red\n2) Green\n3) Yellow\n4) Blue\n5) Magenta\n6) Cyan"
+    $onMeString = gets.chomp.split(", ")
+    (0...$onMeString.length()).each do |i|
+        $onMeString[i] = $onMeString[i].to_i
+    end
+    puts "Chosen Numbers: #{$onMeString}"
 end
 
 # Hahahha its not like I even need this method now, do I?
