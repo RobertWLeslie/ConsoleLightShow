@@ -5,18 +5,18 @@
                                    2019
 =end
 require 'pastel'
-require 'tty-font'
+require 'tty'
 
 $pastel = Pastel.new
 $prng = Random.new
 $prng1 = Random.new
-$font = TTY::Font.new(:doom)
+
 # titleSlide()
 # This is the first method that runs, and then calls menu()
 def titleSlide()
     print "\n-------------------------------------------------------------------------\n"
     print $font.write("Console Light Show")
-    print "\nA program for Joshua Bruce, By Robert Leslie\n"
+    print "\nA program for Joshua Bruce\nWritten with love by Robert Leslie\n"
     print "---------------------------------------------------------------------------\n"
     menu()
 end
@@ -30,7 +30,6 @@ def menu()
     print "\n-------------------------------------------------------------------------\n"
     puts "1) Print Random Letters, Numbers, and Symbols (For a given set of time in seconds)"
     puts "2) Enter a string to be printed in random colors (For a given set of time in seconds)"
-    puts "3) Enter multiple strings to be printed in random colors (For a given set of time in seconds)"
     puts "99) Beta Functions"
     puts "100) End Program"
     coin = gets.to_i
@@ -39,10 +38,6 @@ def menu()
     when 1
         printRandom(getDuration())
     when 2
-        puts "Enter string: "
-        str = gets.chomp
-        printString(str, getDuration())
-    when 3
         puts "Enter your strings to be printed, separated by a comma"
         str = gets.chomp
         printStringS(str, getDuration())
@@ -169,19 +164,6 @@ def getDuration()
     return gets.to_i
 end
 
-# printString(string printMe, int duration)
-# Passed a string, and a durration. Prints the given string in randomly picked
-# colors for a given duration (in seconds), and then calls the menu function
-def printString(printMe, duration)
-    currentTime = Time.now.to_i
-    futureTime = currentTime + duration
-    while (currentTime <= futureTime) do
-        print "#{isMe(onMe(printMe))}"
-        currentTime = Time.now.to_i
-    end
-    menu()
-end
-
 #printRandom(int duration)
 # Passed an integer, interpreted as a duration in seconds for a while loop to 
 # run, prints out random symbols in a string array in randomly picked colors for
@@ -215,6 +197,8 @@ def printStringS(printMe, duration)
     menu()
 end
 
+#printRandomFont(printMe, duration)
+#Passed a string and a duration, the code creates an array 
 def printRandomFont(printMe, duration)
     x = printMe.split(", ")
     currentTime = Time.now.to_i
@@ -233,18 +217,18 @@ end
 #
 # Note to self: make this into a box using TTY
 def infiniteLoopWarning(whereAmIFrom)
-    puts "**********************************************************************"
-    puts "**********************************************************************"
-    puts "**********************************************************************"
-    puts "****************************WARNING!**********************************"
-    puts "**************This Method Causes an Infinite Loop!********************"
-    puts "********To stop this infinite loop, press CTRL+C in the terminal******"
-    puts "***********If you wish to continue, enter 'Y' and hit return**********"
-    puts "**********Otherwise, enter anything else and return to safety*********"
-    puts "**********************************************************************"
-    puts "**********************************************************************"
-    puts "**********************************************************************"
-    puts "**********************************************************************"
+    puts "______________________________________________________________________"
+    puts "|********************************************************************|"
+    puts "|********************************************************************|"
+    puts "|***************************WARNING!*********************************|"
+    puts "|*************This Method Causes an Infinite Loop!*******************|"
+    puts "|*******To stop this infinite loop, press CTRL+C in the terminal*****|"
+    puts "|**********If you wish to continue, enter 'Y' and hit return*********|"
+    puts "|*********Otherwise, enter anything else and return to safety********|"
+    puts "|********************************************************************|"
+    puts "|********************************************************************|"
+    puts "|********************************************************************|"
+    puts "______________________________________________________________________"
     case(whereAmIFrom)
     when 0
         betaFuntions()
