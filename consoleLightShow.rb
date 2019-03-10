@@ -5,17 +5,18 @@
                                    2019
 =end
 require 'pastel'
+require 'tty-font'
 
 $pastel = Pastel.new
 $prng = Random.new
 $prng1 = Random.new
-
+$font = TTY::Font.new(:doom)
 # titleSlide()
 # This is the first method that runs, and then calls menu()
 def titleSlide()
-    print "\n-------------------------------------------------------------------------"
-    print "\nCONSOLELIGHTSHOW.rb\n"
-    print "A program for Joshua Bruce, By Robert Leslie\n"
+    print "\n-------------------------------------------------------------------------\n"
+    print $font.write("Console Light Show")
+    print "\nA program for Joshua Bruce, By Robert Leslie\n"
     print "-------------------------------------------------------------------------\n"
     menu()
 end
@@ -98,7 +99,7 @@ def getIsMe()
     puts "1) Red\n2) Green\n3) Yellow\n4) Blue\n5) Magenta\n6) Cyan"
     $isMeString = gets.chomp.split(", ")
     (0...$isMeString.length()).each do |i|
-        $isMeString[i] = $onMeString[i].to_i
+        $isMeString[i] = $isMeString[i].to_i
     end
     puts "Chosen Numbers: #{$isMeString}"
 end
@@ -213,6 +214,8 @@ end
 # This was written early in development incase I knew some logic at some point
 # would cause an infinite loop. I'm keeping this method in here just in case 
 # logic is written that could accidentally cause an infinite loop
+#
+# Note to self: make this into a box using TTY
 def infiniteLoopWarning(whereAmIFrom)
     puts "**********************************************************************"
     puts "**********************************************************************"
