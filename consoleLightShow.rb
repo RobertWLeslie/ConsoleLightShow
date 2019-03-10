@@ -68,6 +68,7 @@ def betaFuntions()
     puts "2) getOnMe() (heheheheh)"
     puts "3) printStringRandomFont(string, duration)"
     puts "4) printRandomFont(duration)"
+    puts "5) getFont()"
     puts "99) Infinite Loop warning Message"
     puts "100) Return to safety"
     coin = gets.to_i
@@ -87,6 +88,8 @@ def betaFuntions()
         printStringRandomFont(str, getDuration())
     when 4
         printRandomFont(getDuration())
+    when 5
+        getFont()
     else
         puts "Undefined Input\nReturning To Safety"
         menu()
@@ -133,6 +136,9 @@ def onMe(str)
     end
 end
 
+#returnFont(str)
+# Passed a string, and returns it as a TTY-font which always has a new line at
+# the end, which the font is dependent on a random number
 def returnFont(str)
     case $prng1.rand(1..5)
     when 1
@@ -170,6 +176,7 @@ def getIsMe()
         isMeString[i] = isMeString[i].to_i
     end
     puts "Chosen Numbers: #{isMeString}"
+    return isMeString
 end
 
 # getOnMe()
