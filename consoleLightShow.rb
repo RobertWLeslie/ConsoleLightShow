@@ -66,7 +66,7 @@ def betaFuntions()
     puts "Use these at your own discretion, I'm not your dad"
     puts "1) getIsMe()"
     puts "2) getOnMe() (heheheheh)"
-    puts "3) printStringFont(string, duration)"
+    puts "3) printStringRandomFont(string, duration)"
     puts "4) printRandomFont(duration)"
     puts "99) Infinite Loop warning Message"
     puts "100) Return to safety"
