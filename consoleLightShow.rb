@@ -17,7 +17,7 @@ def titleSlide()
     print "\n-------------------------------------------------------------------------\n"
     print $font.write("Console Light Show")
     print "\nA program for Joshua Bruce, By Robert Leslie\n"
-    print "-------------------------------------------------------------------------\n"
+    print "---------------------------------------------------------------------------\n"
     menu()
 end
 
@@ -69,6 +69,7 @@ def betaFuntions()
     puts "Use these at your own discretion, I'm not your dad"
     puts "1) getIsMe()"
     puts "2) getOnMe() (heheheheh)"
+    puts "3) printRandomFont(duration)"
     puts "99) Infinite Loop warning Message"
     puts "100) Return to safety"
     coin = gets.to_i
@@ -82,6 +83,10 @@ def betaFuntions()
         infiniteLoopWarning(0)
     when 100
         menu()
+    when 3
+        puts "Enter your strings to be printed, separated by a comma"
+        str = gets.chomp
+        printRandomFont(str, getDuration())
     else
         puts "Undefined Input\nReturning To Safety"
         menu()
@@ -187,7 +192,7 @@ def printRandom(duration)
     currentTime = Time.now.to_i
     futureTime = currentTime + duration
     while (currentTime <= futureTime) do
-        print "#{isMe(onMe(x[$prng.rand(0...x.length())]))}"
+        print "#{isMe(onMe( x[$prng.rand(0...x.length())] ))}"
         currentTime = Time.now.to_i
     end
     menu()
@@ -205,6 +210,17 @@ def printStringS(printMe, duration)
     futureTime = currentTime + duration
     while (currentTime <= futureTime) do
         print "#{isMe(onMe(x[$prng.rand(0...x.length())]))}"
+        currentTime = Time.now.to_i
+    end
+    menu()
+end
+
+def printRandomFont(printMe, duration)
+    x = printMe.split(", ")
+    currentTime = Time.now.to_i
+    futureTime = currentTime + duration
+    while (currentTime <= futureTime) do
+        print "#{isMe(onMe($font.write( x[$prng.rand(0...x.length())] )))}"
         currentTime = Time.now.to_i
     end
     menu()
@@ -244,7 +260,7 @@ BEGIN{
 }
 
 END{
-    puts "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
+    puts "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n"
     puts "Twitter: @BeltedYapper"
     puts "Email: robert.leslie1997@gmail.com"
     puts "Console Light Show, a program for Joshua Bruce by Robert Leslie"
