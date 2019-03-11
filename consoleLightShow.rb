@@ -142,8 +142,8 @@ end
 def returnFont(str)
     case $prng1.rand(1..5)
     when 1
-        #$fontFont = TTY::Font.new(:3d)
-        #return $fontFont.write(str)
+        $fontFont = TTY::Font.new("3d")
+        return $fontFont.write(str)
     when 2
         $fontFont = TTY::Font.new(:doom)
         return $fontFont.write(str)
