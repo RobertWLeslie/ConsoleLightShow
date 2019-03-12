@@ -198,8 +198,7 @@ end
 # getFont()
 # See: getIsMe(). Its exactly the same as that except this is for the FONT of
 # the printed strings. This will eventually be passed into a method that calls
-# those font(s) the user picked. It is currently 3:35 A.M. and I'm slowly
-# starting to lose it. I remember why I don't like hackathons sometimes.
+# those font(s) the user picked.
 def getFont()
     puts "Enter font(s) you want"
     puts "1) Doom\n2) Standard\n3) Star Wars\n4) Straight\n"
