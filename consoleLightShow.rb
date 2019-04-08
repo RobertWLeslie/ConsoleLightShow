@@ -10,16 +10,29 @@ require 'tty'
 $pastel = Pastel.new
 $prng = Random.new
 $prng1 = Random.new
-$titleSlideFont = TTY::Font.new(:standard)
 $fontFont = TTY::Font.new()
 
 # titleSlide()
 # This is the first method that runs, and then calls menu()
 def titleSlide()
+=begin    
     print "\n-------------------------------------------------------------------------\n"
     print $titleSlideFont.write("Console Light Show")
     print "\nA program for Joshua Bruce\nWritten with love by Robert Leslie\n"
     print "---------------------------------------------------------------------------\n"
+=end
+    titleSlideFont = TTY::Font.new(:standard)
+    titleBox = TTY::Box.frame(
+        width: TTY::Screen.width-1,
+        height: 10,
+        border: :thick,
+        align: :center,
+        padding: 1
+    )do
+        
+        "#{titleSlideFont.write("Console Light Show")}\nA program for Joshua Bruce\nWritten with love by Robert Leslie"
+    end
+    print titleBox
     menu()
 end
 
