@@ -24,13 +24,13 @@ def titleSlide()
     titleSlideFont = TTY::Font.new(:standard)
     titleBox = TTY::Box.frame(
         width: TTY::Screen.width-1,
-        height: 10,
+        height: 15,
         border: :thick,
         align: :center,
         padding: 1
     )do
-        
-        "#{titleSlideFont.write("Console Light Show")}\nA program for Joshua Bruce\nWritten with love by Robert Leslie"
+        "#{titleSlideFont.write("Console Light Show")}
+        \nA program for Joshua Bruce\nWritten with love by Robert Leslie\n2019"
     end
     print titleBox
     menu()
